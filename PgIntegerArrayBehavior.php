@@ -40,7 +40,7 @@ use yii\db\ActiveRecord;
 class PgIntegerArrayBehavior extends Behavior{
 
     /**
-     * @var string the attribute that containt field name in table with type int[].
+     * @var string the attribute that containt field name in table with type int[]
      */
     public $field = 'pgarray';
 
