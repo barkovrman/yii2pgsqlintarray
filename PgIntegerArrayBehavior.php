@@ -1,12 +1,13 @@
 <?php
 
-namespace Barkov\Pgsqlint;
+namespace barkov\pgsqlint;
 
-use Codeception\Exception\ConfigurationException;
-use Yii;
+
+use yii;
 use yii\base\Behavior;
 use yii\validators\Validator;
 use yii\db\ActiveRecord;
+use Codeception\Exception\ConfigurationException;
 
 /**
  * Class PgIntegerArrayBehavior add functionality for use PostgreSQL int[] field in ActiveRecord.
@@ -51,19 +52,19 @@ class PgIntegerArrayBehavior extends Behavior{
      * @param $attribute
      * @param $params
      */
-    public function intArray($attribute, $params){
-
-        if (!is_array($this->owner->{$attribute})) {
-            $this->owner->addError($attribute, Yii::t('app','Must be array of integer.'));
-            return;
-        }
-
-        foreach ($this->owner->{$attribute} as $val)
-            if (!is_integer($val)) {
-                $this->owner->addError($attribute, Yii::t('app','Value {0} not integer.', $val));
-                return;
-            }
-    }
+//    public function intArray($attribute, $params){
+//
+//        if (!is_array($this->owner->{$attribute})) {
+//            $this->owner->addError($attribute, Yii::t('app','Must be array of integer.'));
+//            return;
+//        }
+//
+//        foreach ($this->owner->{$attribute} as $val)
+//            if (!is_integer($val)) {
+//                $this->owner->addError($attribute, Yii::t('app','Value {0} not integer.', $val));
+//                return;
+//            }
+//    }
 
     /**
      * @inheritdoc
@@ -85,7 +86,7 @@ class PgIntegerArrayBehavior extends Behavior{
 
         // attach validator for configure field
         $validators = $owner->getValidators();
-        $validators->append(Validator::createValidator('intArray', $this, (array) $this->field, ['skipOnEmpty' => true]));
+        $validators->append(Validator::createValidator(PgIntegerArrayValidator::className(), $this, (array) $this->field, ['skipOnEmpty' => true]));
     }
 
     /**
@@ -119,7 +120,7 @@ class PgIntegerArrayBehavior extends Behavior{
      *
      * @param $event
      */
-    public function transformToPhpArray($event) {
+    public function transformToPhpArray() {
         $this->owner->{$this->field} = $this->StringToArray($this->owner->{$this->field});
     }
 
@@ -128,7 +129,7 @@ class PgIntegerArrayBehavior extends Behavior{
      *
      * @param $event
      */
-    public function transformToPostgreArray($event) {
+    public function transformToPostgreArray() {
 
         $new_val = $this->ArrayToString($this->owner->{$this->field});
         if ($new_val) $this->owner->{$this->field} = $new_val;
