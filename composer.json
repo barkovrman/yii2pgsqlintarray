@@ -1,0 +1,22 @@
+{
+    "name": "barkov/pgsqlint",
+    "description": "Enable work with PostgreSQL array of integer, in AR.",
+    "type": "library",
+    "keywords": ["yii2","extension","postgres"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Barkov Roman",
+            "email": "barkov.rman@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "barkov\\pgsqlint\\": "src/"
+        }
+    }
+
+}
