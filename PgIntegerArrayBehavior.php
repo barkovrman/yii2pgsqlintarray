@@ -36,7 +36,7 @@ use Codeception\Exception\ConfigurationException;
  *
  * ```
  * @author Barkov Roman <barkov.rman@gmail.com>
- * @version Version 1.0
+ * @version Version 1.1
  */
 class PgIntegerArrayBehavior extends Behavior{
 

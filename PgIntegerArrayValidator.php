@@ -13,7 +13,7 @@ use yii\validators\Validator;
  * Example:  ['field_name', 'intArray', 'skipOnEmpty' => true]
  *
  * @author Barkov Roman <barkov.rman@gmail.com>
- * @version Version 1.0
+ * @version Version 1.1
  */
 class PgIntegerArrayValidator extends Validator
 {
@@ -38,7 +38,7 @@ class PgIntegerArrayValidator extends Validator
 
         foreach ($model->$attribute as $val)
             if (!is_integer($val)) {
-                $error_msg = Yii::t('app','Value {0} not integer.', $val);
+                $error_msg = Yii::t('app','Value \'{0}\' not integer.', $val);
                 Yii::error($error_msg, $this->errorcategory);
                 $this->addError($model, $attribute, $error_msg);
                 return;
