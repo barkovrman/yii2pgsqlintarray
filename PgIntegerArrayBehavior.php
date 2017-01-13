@@ -33,7 +33,6 @@ use Codeception\Exception\ConfigurationException;
  * }
  *
  *
- *
  * ```
  * @author Barkov Roman <barkov.rman@gmail.com>
  * @version Version 1.1
